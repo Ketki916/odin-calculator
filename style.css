@@ -1,0 +1,71 @@
+body {
+    height: 950px;;
+}
+
+.calculator-container {
+    box-sizing: border-box;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-container {
+    box-sizing: border-box;
+    height: 150px;
+    flex: 0 1 auto;
+}
+
+.button-container {
+    flex: 1;
+    display: flex;
+}
+
+.digits-container {
+    box-sizing: border-box;
+    width: 300px;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.digits-1-to-9 {
+    box-sizing: border-box;
+    height: 600px;
+    flex: 0 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.digit-1, .digit-2, .digit-3, .digit-4, .digit-5, .digit-6, .digit-7, .digit-8, .digit-9 {
+    box-sizing: border-box;
+    height: 200px;
+    width: 100px;
+    flex: 0 1 auto;
+}
+
+.digit-0-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.digit-0 {
+    box-sizing: border-box;
+    height: 200px;
+    width: 100px;
+    flex: 0 1 auto;
+}
+
+.other-buttons-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.clear, .plus, .minus, .times, .divide, .equals {
+    box-sizing: border-box;
+    height: 160px;
+    flex: 0 1 auto;
+}
+
