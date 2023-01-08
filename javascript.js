@@ -12,30 +12,73 @@ let minusButton = document.querySelector('.minus');
 let timesButton = document.querySelector('.times');
 let divideButton = document.querySelector('.divide');
 let equalsButton = document.querySelector('.equals');
+let negativeButton = document.querySelector('.negative');
+let decimalButton = document.querySelector('.decimal');
 
 function calculate(param1, param2, operator) {  // output should be string
     if (operator == '+') {
-        let output = Number(parseFloat(Math.round((Number(param1) + Number(param2)) * 100000000000000000)/100000000000000000));
-        console.log(output);
+        let output = Number(parseFloat(Math.round((Number(param1) + Number(param2)) * 1000000000000000)/1000000000000000));
         num1 = '';
         num2 = '';
         operation = '';
-        return output.toString();
+        output = output.toString();
+        if (output.includes(".") && !(output.includes("e")) && output.length > 17)  {
+            if (Number(output[17]) >= 5 ) {
+                if (output[16] == "9") {
+                    output = output.slice(0, 15) + (Number(output[15]) + 1).toString() + "0";
+                }
+                else {
+                    output = output.slice(0, 16) + (Number(output[16]) + 1).toString();
+                }
+            }
+            else {
+                output = output.slice(0,17);
+            }
+        }
+        return output;
     }
     if (operator == "-") {
-        let output = Number(parseFloat(Math.round((Number(param1) - Number(param2)) * 100000000000000000)/100000000000000000));
+        let output = Number(parseFloat(Math.round((Number(param1) - Number(param2)) * 1000000000000000)/1000000000000000));
         num1 = '';
         num2 = '';
         operation = '';
-        return output.toString();
+        output = output.toString();
+        if (output.includes(".") && !(output.includes("e")) && output.length > 17)  {
+            if (Number(output[17]) >= 5 ) {
+                if (output[16] == "9") {
+                    output = output.slice(0, 15) + (Number(output[15]) + 1).toString() + "0";
+                }
+                else {
+                    output = output.slice(0, 16) + (Number(output[16]) + 1).toString();
+                }
+            }
+            else {
+                output = output.slice(0,17);
+            }
+        }
+        return output;
     }
     if (operator == '*') {
-        let output = Number(parseFloat(Math.round((Number(param1) * Number(param2)) * 100000000000000000)/100000000000000000));
+        let output = Number(parseFloat(Math.round((Number(param1) * Number(param2)) * 1000000000000000)/1000000000000000));
         console.log(output);
         num1 = '';
         num2 = '';
         operation = '';
-        return output.toString();
+        output = output.toString();
+        if (output.includes(".") && !(output.includes("e")) && output.length > 17) {
+            if (Number(output[17]) >= 5 ) {
+                if (output[16] == "9") {
+                    output = output.slice(0, 15) + (Number(output[15]) + 1).toString() + "0";
+                }
+                else {
+                    output = output.slice(0, 16) + (Number(output[16]) + 1).toString();
+                }
+            }
+            else {
+                output = output.slice(0,17);
+            }
+        }
+        return output;
     }
     if (operator == "/") {
         if (num2 == "0") {
@@ -45,11 +88,25 @@ function calculate(param1, param2, operator) {  // output should be string
             return "ERROR: Cannot divide by 0";
         }
         else {
-            let output = Number(parseFloat(Math.round((Number(param1) / Number(param2)) * 100000000000000000)/100000000000000000));
+            let output = Number(parseFloat(Math.round((Number(param1) / Number(param2)) * 1000000000000000)/1000000000000000));
             num1 = '';
             num2 = '';
             operation = '';
-            return output.toString();
+            output = output.toString();
+            if (output.includes(".") && !(output.includes("e")) && output.length > 17)  {
+                if (Number(output[17]) >= 5 ) {
+                    if (output[16] == "9") {
+                        output = output.slice(0, 15) + (Number(output[15]) + 1).toString() + "0";
+                    }
+                    else {
+                        output = output.slice(0, 16) + (Number(output[16]) + 1).toString();
+                    }
+                }
+                else {
+                    output = output.slice(0,17);
+                }
+            }
+            return output;
         }
     }
 
@@ -73,6 +130,66 @@ digitButtons.forEach((digitButton) => {digitButton.addEventListener("click", () 
     }
 })});
 
+negativeButton.addEventListener('click', () => {
+    if (operation == '') {
+        if (displayScreen.textContent.length < 17) {
+            if (num1.includes('-')) {
+                num1 = num1.slice(1);
+                displayScreen.textContent = num1;
+            }
+            else {
+                num1 = "-" + num1;
+                displayScreen.textContent = num1;
+            }
+        }
+        else {
+            if (num1.includes('-')) {
+                num1 = num1.slice(1);
+                displayScreen.textContent = num1;
+            }
+        }
+    }
+    else {
+        if (num2 == '') {
+            displayScreen.textContent = '';
+        }
+        if (displayScreen.textContent.length < 17) {
+            if (num2.includes('-')) {
+                num2 = num2.slice(1);
+                displayScreen.textContent = num2;
+            }
+            else {
+                num2 = "-" + num2;
+                displayScreen.textContent = num2;
+            }
+        }
+        else {
+            if (num2.includes('-')) {
+                num2 = num2.slice(1);
+                displayScreen.textContent = num2;
+            }
+        }
+    }
+})
+
+decimalButton.addEventListener('click', () => {
+    if (operation == '') {
+        if (displayScreen.textContent.length < 17) {
+            num1 = num1 + ".";
+            displayScreen.textContent = num1;
+        }
+    }
+    else {
+        if (num2 == '') {
+            displayScreen.textContent = '';
+        }
+        if (displayScreen.textContent.length < 17) {
+            num2 = num2 + ".";
+            displayScreen.textContent = num2;
+        }
+    }
+})
+
 plusButton.addEventListener('click', () => {
     if (operation == '') {
         operation = '+';
@@ -91,7 +208,7 @@ plusButton.addEventListener('click', () => {
             }
 
 
-            if (num1.length > 17) {
+            if (num1.length > 17 || num1.includes('e')) {
                 displayScreen.textContent = "ERROR: Output is too large";
             }
             else {
@@ -121,7 +238,7 @@ minusButton.addEventListener('click', () => {
                 num1 = output; // Make sure output is string
             }
 
-            if (num1.length > 17) {
+            if (num1.length > 17 || num1.includes('e')) {
                 displayScreen.textContent = "ERROR: Output is too large";
             }
             else {
@@ -150,7 +267,7 @@ timesButton.addEventListener('click', () => {
                 num1 = output; // Make sure output is string
             }
 
-            if (num1.length > 17) {
+            if (num1.length > 17 || num1.includes('e')) {
                 displayScreen.textContent = "ERROR: Output is too large";
             }
             else {
@@ -179,7 +296,7 @@ divideButton.addEventListener('click', () => {
                 num1 = output; // Make sure output is string
             }
 
-            if (num1.length > 17) {
+            if (num1.length > 17 || num1.includes('e')) {
                 displayScreen.textContent = "ERROR: Output is too large";
             }
             else {
@@ -200,7 +317,7 @@ clearButton.addEventListener('click', () => {
 
 equalsButton.addEventListener('click', () => {
     let output = calculate(num1, num2, operation);
-    if (output.length > 17 && output != "ERROR: Cannot divide by 0") {
+    if ((output.length > 17 && output != "ERROR: Cannot divide by 0") || output.includes("e")) {
         displayScreen.textContent = "ERROR: Output is too large";
     }
     else {

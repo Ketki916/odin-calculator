@@ -71,11 +71,11 @@ body {
 .digit-0-container {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
-.digit-0 {
+.digit-0, .negative, .decimal {
     box-sizing: border-box;
     box-shadow: 10px 5px 5px gray;
     font-size: 24px;
