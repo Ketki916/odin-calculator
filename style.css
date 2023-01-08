@@ -1,18 +1,31 @@
 body {
-    height: 950px;;
+    box-sizing: border-box;
+    height: 950px;
+    display: flex;
+    justify-content: center;
 }
 
 .calculator-container {
     box-sizing: border-box;
-    width: 400px;
+    box-shadow: 10px 5px 5px gray;
+    border-style: solid;
+    width: 430px;
+    height: 750px;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .display-container {
     box-sizing: border-box;
-    height: 150px;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 8px;
+    height: 120px;
     width: 400px;
+    margin: 16px;
     flex: 0 1 auto;
     display: flex;
     align-items: center;
@@ -23,6 +36,7 @@ body {
 }
 
 .button-container {
+    width: 400px;
     height: 600px;
     flex: 0 1 auto;
     display: flex;
@@ -46,8 +60,11 @@ body {
 
 .digit-1, .digit-2, .digit-3, .digit-4, .digit-5, .digit-6, .digit-7, .digit-8, .digit-9 {
     box-sizing: border-box;
-    height: 150px;
-    width: 100px;
+    box-shadow: 10px 5px 5px gray;
+    font-size: 24px;
+    margin: 8px;
+    height: 134px;
+    width: 84px;
     flex: 0 1 auto;
 }
 
@@ -60,20 +77,28 @@ body {
 
 .digit-0 {
     box-sizing: border-box;
-    height: 150px;
-    width: 100px;
+    box-shadow: 10px 5px 5px gray;
+    font-size: 24px;
+    margin: 8px;
+    height: 134px;
+    width: 84px;
     flex: 0 1 auto;
 }
 
 .other-buttons-container {
-    flex: 1;
+    width: 100px;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
 }
 
 .clear, .plus, .minus, .times, .divide, .equals {
     box-sizing: border-box;
-    height: 120px;
+    box-shadow: 10px 5px 5px gray;
+    font-size: 24px;
+    margin: 8px;
+    width: 84px;
+    height: 104px;
     flex: 0 1 auto;
 }
 
